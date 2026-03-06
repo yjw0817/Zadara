@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zadara Korea — 프로젝트 마스터 문서</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif; background: #0d1b2e; color: #e0e6f0; line-height: 1.7; }
+  .cover { background: linear-gradient(135deg, #0d1b2e 0%, #1a2f4e 100%); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 60px 40px; border-bottom: 3px solid #00bcd4; }
+  .cover h1 { font-size: 2.8em; font-weight: 700; color: #fff; margin-bottom: 16px; }
+  .cover h1 span { color: #00bcd4; }
+  .cover .sub { font-size: 1.2em; color: #8ab4cc; margin-bottom: 40px; }
+  .cover .badge { display: inline-block; background: #00bcd4; color: #0d1b2e; padding: 8px 24px; border-radius: 20px; font-weight: 700; font-size: 0.95em; margin: 6px; }
+  .cover .badge.gray { background: #1e3a5f; color: #8ab4cc; }
+  .section { max-width: 960px; margin: 0 auto; padding: 60px 40px; border-bottom: 1px solid #1e3a5f; }
+  .section h2 { font-size: 1.8em; color: #00bcd4; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+  .section h2 .tag { font-size: 0.55em; background: #1e3a5f; color: #8ab4cc; padding: 4px 12px; border-radius: 10px; vertical-align: middle; }
+  .section .desc { color: #8ab4cc; font-size: 0.95em; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid #1e3a5f; }
+  .section h3 { font-size: 1.15em; color: #fff; margin: 28px 0 12px; }
+  .card { background: #1a2f4e; border-radius: 12px; padding: 24px; margin-bottom: 16px; border-left: 4px solid #00bcd4; }
+  .card.yellow { border-left-color: #f59e0b; }
+  .card.green { border-left-color: #10b981; }
+  .card.red { border-left-color: #ef4444; }
+  .card.purple { border-left-color: #8b5cf6; }
+  .card h4 { color: #00bcd4; font-size: 1.05em; margin-bottom: 10px; }
+  .card.yellow h4 { color: #f59e0b; }
+  .card.green h4 { color: #10b981; }
+  .card.red h4 { color: #ef4444; }
+  .card.purple h4 { color: #8b5cf6; }
+  .card p, .card li { color: #b0c4d8; font-size: 0.93em; }
+  .card ul { padding-left: 20px; }
+  .card ul li { margin-bottom: 6px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  th { background: #1e3a5f; color: #00bcd4; padding: 12px 16px; text-align: left; font-size: 0.9em; }
+  td { padding: 11px 16px; border-bottom: 1px solid #1e3a5f; color: #b0c4d8; font-size: 0.9em; }
+  tr:hover td { background: #1a2f4e; }
+  .badge-inline { display: inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.8em; font-weight: 600; }
+  .badge-green { background: #064e3b; color: #10b981; }
+  .badge-yellow { background: #451a03; color: #f59e0b; }
+  .badge-red { background: #450a0a; color: #ef4444; }
+  .badge-blue { background: #1e3a5f; color: #00bcd4; }
+  .code { background: #0a1628; border-radius: 8px; padding: 16px 20px; font-family: 'Consolas', monospace; font-size: 0.88em; color: #7dd3fc; margin: 12px 0; border: 1px solid #1e3a5f; }
+  .highlight-box { background: #0a2a1a; border: 1px solid #10b981; border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+  .highlight-box p { color: #6ee7b7; font-size: 1.05em; font-weight: 600; text-align: center; }
+  .warn-box { background: #1a1a0a; border: 1px solid #f59e0b; border-radius: 10px; padding: 20px 24px; margin: 20px 0; }
+  .warn-box p { color: #fcd34d; font-size: 1.0em; }
+  .action-item { display: flex; align-items: flex-start; gap: 14px; background: #1a2f4e; border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
+  .action-num { background: #00bcd4; color: #0d1b2e; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9em; flex-shrink: 0; margin-top: 2px; }
+  .action-content h4 { color: #fff; font-size: 0.98em; margin-bottom: 4px; }
+  .action-content p { color: #8ab4cc; font-size: 0.88em; }
+  .footer { text-align: center; padding: 40px; color: #3a5f7d; font-size: 0.85em; }
+  @media print { body { background: #fff; color: #000; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div style="font-size:0.9em;color:#3a5f7d;margin-bottom:20px;letter-spacing:2px;">PROJECT MASTER DOCUMENT</div>
+  <h1>Zadara <span>Korea</span><br>포털 구축 프로젝트</h1>
+  <div class="sub">세션 간 맥락 유지를 위한 핵심 문서 — Claude와 함께 사용</div>
+  <div style="margin-top:30px;">
+    <span class="badge">대상: compute-iaas-kr1-01.zadara.com</span>
+    <span class="badge">한국 KR1 리전</span>
+    <span class="badge gray">작성일: 2026년 2월</span>
+  </div>
+  <div style="margin-top:16px;color:#3a5f7d;font-size:0.85em;">
+    ⚡ 새 세션 시작 시 이 문서를 Claude에게 보여주면 맥락이 즉시 복원됩니다
+  </div>
+</div>
+
+<!-- 1. 프로젝트 배경 -->
+<div class="section">
+  <h2>1. 프로젝트 배경 &amp; 목표 <span class="tag">CONTEXT</span></h2>
+  <div class="desc">이 프로젝트가 왜 시작되었고 무엇을 달성하려 하는가</div>
+
+  <div class="card green">
+    <h4>🎯 핵심 목표</h4>
+    <ul>
+      <li>Zadara Cloud 인프라를 기반으로 <strong>한국형 웹 포털</strong>을 자체 개발</li>
+      <li>한국 공공시장 진출을 위한 <strong>CSAP 인증</strong> 획득</li>
+      <li>조달청 디지털서비스몰 등록을 통한 <strong>공공납품</strong> 실현</li>
+    </ul>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="card">
+      <h4>🏢 회사 구조</h4>
+      <ul>
+        <li>Zadara 본사 (이스라엘계 글로벌 클라우드)</li>
+        <li>한국 지사 — 포털 구축 주도</li>
+        <li>대상 인프라: compute-iaas-kr1-01.zadara.com</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>👤 내 포지션</h4>
+      <ul>
+        <li>직함: CTO / 기술이사 (Korea)</li>
+        <li>연봉: 7,000만원 (협의됨)</li>
+        <li>역할: 개발 설계·감독, 전략 기획, 보안 인증 총괄</li>
+        <li>비고: 업무 범위 대비 연봉 상향 여지 있음</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Zadara 기술 분석 결과 -->
+<div class="section">
+  <h2>2. Zadara 기술 분석 결과 <span class="tag">ANALYSIS DONE</span></h2>
+  <div class="desc">면접 후 직접 시스템에 접속하여 분석 완료 (19개 페이지, 60+ API 엔드포인트)</div>
+
+  <h3>📌 플랫폼 구조</h3>
+  <div class="grid2">
+    <div class="card">
+      <h4>🖥 Frontend</h4>
+      <ul>
+        <li>Vue.js 기반 SPA</li>
+        <li>Chart.js / ECharts (모니터링 차트)</li>
+        <li>Socket.IO 실시간 스트리밍 확인</li>
+        <li>이벤트 로그: auth.user_logged_in, compute.instance.create.end 등</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⚡ Backend API</h4>
+      <ul>
+        <li>REST API: /api/v2/ 구조</li>
+        <li>OpenStack Keystone 인증 (2단계)</li>
+        <li>Opaque Token 방식 (JWT 아님)</li>
+        <li>X-Auth-Token 헤더로 API 호출</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>🔐 인증 흐름</h3>
+  <div class="code">
+1. POST /api/v2/identity/auth  → Domain Token 발급<br>
+2. GET  /api/v2/identity/users/myself/projects  → 프로젝트 목록<br>
+3. POST /api/v2/identity/auth  → Project Token 발급 (2단계)<br>
+4. 이후 모든 API: Header: X-Auth-Token: {token}<br>
+5. 토큰 만료 → 자동 갱신 로직 필요
+  </div>
+
+  <h3>📡 주요 API 엔드포인트</h3>
+  <table>
+    <tr><th>영역</th><th>엔드포인트</th><th>상태</th></tr>
+    <tr><td>인증</td><td>POST /api/v2/identity/auth</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Compute</td><td>GET /api/v2/compute/vms</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Compute</td><td>GET /api/v2/compute/vm-snapshots</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Compute</td><td>GET /api/v2/autoscaling-groups/groups</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>VPC Network</td><td>GET /api/v2/vpcs</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>VPC Network</td><td>GET /api/v2/vpcs/networks</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>VPC Network</td><td>GET /api/v2/vpcs/elastic-ips</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>VPC Network</td><td>GET /api/v2/vpcs/nat-gateways</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>LBaaS</td><td>GET /api/v2/lbaas/load-balancers</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Storage</td><td>GET /api/v2/volumes</td><td><span class="badge-inline badge-red">404 (VPSA 미연동)</span></td></tr>
+    <tr><td>Monitoring</td><td>GET /api/v2/events/query</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Monitoring</td><td>GET /api/v2/alarm/alarms</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Monitoring</td><td>GET /api/v2/cloudwatch-backend/metrics</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Identity</td><td>GET /api/v2/identity/users</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Identity</td><td>GET /api/v2/identity/projects</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Images</td><td>GET /api/v2/machine-images</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Config</td><td>GET /api/v2/engines</td><td><span class="badge-inline badge-green">정상</span></td></tr>
+    <tr><td>Config</td><td>GET /api/v2/cluster/hardware</td><td><span class="badge-inline badge-red">403 (Admin 전용)</span></td></tr>
+  </table>
+
+  <div class="warn-box" style="margin-top:20px;">
+    <p>⚠️ API Swagger Spec 공식 문서 확보 필요 — 확보 즉시 PoC 착수 가능</p>
+  </div>
+</div>
+
+<!-- 3. 전략 -->
+<div class="section">
+  <h2>3. 전략 시나리오 <span class="tag">STRATEGY</span></h2>
+  <div class="desc">CSAP 인증을 위한 두 가지 경로</div>
+
+  <div class="grid2">
+    <div class="card green">
+      <h4>✅ 시나리오 A — 본사 협조 가능 (권장)</h4>
+      <ul>
+        <li>Zadara 인프라 그대로 활용</li>
+        <li>한국 포털 개발 → CSAP 취득</li>
+        <li>가장 빠르고 강력한 경로</li>
+        <li>기간: 약 1~1.5년</li>
+        <li>인원: 5~8명</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h4>🔄 시나리오 B — 본사 협조 어려움</h4>
+      <ul>
+        <li>KT Cloud G / NHN Cloud CSAP 인증존 활용</li>
+        <li>Zadara는 백엔드 API로만 연동</li>
+        <li>기간: 약 1.5~2년</li>
+        <li>인원: 8~12명</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p>⭐ 전략의 핵심 분기점: "Zadara 본사가 한국 CSAP 인증 추진에 협조할 의향이 있는가?"</p>
+  </div>
+
+  <h3>📊 난이도 분석</h3>
+  <table>
+    <tr><th>구분</th><th>난이도</th><th>예상 기간</th><th>비고</th></tr>
+    <tr><td>웹 포털 UI 전체 구현</td><td><span class="badge-inline badge-green">쉬움</span></td><td>1~3개월</td><td>이미 데모 완성 가능</td></tr>
+    <tr><td>백엔드 / 인프라 구축</td><td><span class="badge-inline badge-yellow">보통</span></td><td>2~4개월</td><td>개발팀 보유 시 가능</td></tr>
+    <tr><td>ISMS-P 인증</td><td><span class="badge-inline badge-red">어려움</span></td><td>6개월~1년</td><td>정책·문서·조직 체계 필요</td></tr>
+    <tr><td>CSAP 인증 (공공 필수)</td><td><span class="badge-inline badge-red">매우 어려움</span></td><td>1~2년</td><td>공공납품 필수 — 핵심 분기점</td></tr>
+  </table>
+</div>
+
+<!-- 4. 만들어야 할 문서 -->
+<div class="section">
+  <h2>4. 만들어야 할 문서 목록 <span class="tag">TODO DOCUMENTS</span></h2>
+  <div class="desc">계획 실현을 위한 단계별 필요 문서 체계</div>
+
+  <h3>📋 1단계 — 사업 기획 문서 (지금 당장)</h3>
+  <div class="card">
+    <ul>
+      <li>✅ <strong>제안서 (Proposal)</strong> — 슬라이드로 상당 부분 완성됨</li>
+      <li>⬜ <strong>사업계획서</strong> — 시장 규모, 수익 모델, 투자 비용, 손익 분기점</li>
+      <li>✅ <strong>기술 분석 보고서</strong> — Zadara API 분석 결과 (HTML 완성)</li>
+      <li>⬜ <strong>파트너십 협약서 초안</strong> — Zadara 본사와의 협력 조건 정의</li>
+    </ul>
+  </div>
+
+  <h3>🏗 2단계 — 개발 설계 문서 (개발 착수 전)</h3>
+  <div class="card purple">
+    <ul>
+      <li>⬜ <strong>요구사항 정의서 (SRS)</strong> — 시스템이 무엇을 해야 하는지 명세</li>
+      <li>⬜ <strong>시스템 아키텍처 설계서</strong> — 프론트/백엔드/DB/인프라 구조도</li>
+      <li>⬜ <strong>API 설계서</strong> — 우리 포털의 내부 API 명세 (Swagger 형식)</li>
+      <li>⬜ <strong>DB 설계서</strong> — 테이블 구조, ERD</li>
+      <li>⬜ <strong>UI/UX 와이어프레임</strong> — 주요 화면 레이아웃</li>
+    </ul>
+  </div>
+
+  <h3>🔒 3단계 — 보안/운영 문서 (CSAP 인증 전 필수)</h3>
+  <div class="card red">
+    <ul>
+      <li>⬜ <strong>정보보호 정책서</strong> — 회사의 보안 원칙 선언문</li>
+      <li>⬜ <strong>개인정보 처리방침</strong> — 법적 필수, 서비스에 게시</li>
+      <li>⬜ <strong>접근통제 정책서</strong> — 권한별 시스템 접근 기준</li>
+      <li>⬜ <strong>암호화 정책서</strong> — 데이터 암호화 기준 및 방식</li>
+      <li>⬜ <strong>취약점 점검 보고서</strong> — 보안 스캔 결과 및 조치 내역</li>
+      <li>⬜ <strong>재해복구(DR) 계획서</strong> — 장애 시 복구 절차</li>
+      <li>⬜ <strong>보안 사고 대응 절차서</strong> — 침해 발생 시 대응 프로세스</li>
+    </ul>
+  </div>
+
+  <h3>📑 4단계 — CSAP 신청 문서</h3>
+  <div class="card yellow">
+    <ul>
+      <li>⬜ <strong>서비스 설명서</strong> — 서비스 구조, 데이터 흐름도 포함</li>
+      <li>⬜ <strong>보안 통제 항목 이행 증적</strong> — 각 보안 항목별 조치 완료 증거</li>
+      <li>⬜ <strong>클라우드 인프라 구성도</strong> — 실제 배포 환경 다이어그램</li>
+      <li>⬜ <strong>SLA(서비스 수준 협약서)</strong> — 가용성, 장애 대응 시간 기준</li>
+    </ul>
+  </div>
+
+  <h3>💼 5단계 — 영업/계약 문서 (공공 납품 시)</h3>
+  <div class="card">
+    <ul>
+      <li>⬜ <strong>서비스 소개서</strong> — 1~2페이지 영업용 자료</li>
+      <li>⬜ <strong>표준 이용약관</strong></li>
+      <li>⬜ <strong>표준 계약서</strong></li>
+      <li>⬜ <strong>조달청 등록 신청서</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- 5. 아키텍처 -->
+<div class="section">
+  <h2>5. 제안 아키텍처 요약 <span class="tag">ARCHITECTURE</span></h2>
+  <div class="desc">자체 브랜드 웹 포털의 기술 스택 및 구성</div>
+
+  <div class="grid3">
+    <div class="card">
+      <h4>🖥 Frontend</h4>
+      <ul>
+        <li>Vue.js 또는 React</li>
+        <li>Chart.js / ECharts</li>
+        <li>실시간 대시보드 UI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⚙️ Backend</h4>
+      <ul>
+        <li>Python FastAPI</li>
+        <li>Keystone 인증 연동</li>
+        <li>Celery + Redis (이벤트 폴링)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>💾 Data Layer</h4>
+      <ul>
+        <li>PostgreSQL (메인 DB)</li>
+        <li>Redis (캐시)</li>
+        <li>InfluxDB (메트릭)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🔐 API Gateway</h4>
+      <ul>
+        <li>Nginx / Kong</li>
+        <li>OAuth 2.0 / JWT</li>
+        <li>X-Auth-Token 연동</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📡 Observability</h4>
+      <ul>
+        <li>Kafka / RabbitMQ</li>
+        <li>Prometheus 메트릭</li>
+        <li>감사 로그(Audit Log)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🚀 DevOps</h4>
+      <ul>
+        <li>GitLab CI/CD</li>
+        <li>Docker / Kubernetes</li>
+        <li>클라우드 배포 (서버실 불필요)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 6. 구현 로드맵 -->
+<div class="section">
+  <h2>6. 구현 로드맵 <span class="tag">ROADMAP</span></h2>
+  <div class="desc">단계별 실행 계획 (총 6개월+)</div>
+
+  <div class="grid2">
+    <div class="card green">
+      <h4>Phase 1 — Foundation (1개월)</h4>
+      <ul>
+        <li>요구사항 분석</li>
+        <li>API 분석 &amp; 설계</li>
+        <li>UX/UI 기획 (와이어프레임)</li>
+        <li>DevOps 환경 구축 (GitLab, CI/CD)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Phase 2 — Core Features (2개월)</h4>
+      <ul>
+        <li>리소스 관리 개발 (VM/스토리지/네트워크)</li>
+        <li>계정 &amp; 권한 (JWT, RBAC)</li>
+        <li>기본 모니터링 UI</li>
+      </ul>
+    </div>
+    <div class="card purple">
+      <h4>Phase 3 — Advanced (2개월)</h4>
+      <ul>
+        <li>이벤트 대시보드</li>
+        <li>알림 시스템 (Email/SMS/Webhook)</li>
+        <li>과금 리포트</li>
+        <li>감사 로그</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h4>Phase 4 — Optimization (지속)</h4>
+      <ul>
+        <li>운영 최적화 &amp; 보안 점검</li>
+        <li>CSAP 인증 준비 착수</li>
+        <li>브랜딩 고도화</li>
+        <li>문서화 &amp; 이관</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 다음 액션 -->
+<div class="section">
+  <h2>7. 다음 단계 액션 아이템 <span class="tag">NEXT STEPS</span></h2>
+  <div class="desc">지금 당장 진행해야 할 일들</div>
+
+  <div class="action-item">
+    <div class="action-num">1</div>
+    <div class="action-content">
+      <h4>제안서 최종 보완</h4>
+      <p>슬라이드 12 Socket.IO 설명 문구 보완 완료 → Zadara 본사 미팅 자료 확정</p>
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">2</div>
+    <div class="action-content">
+      <h4>Zadara 본사 CSAP 협조 의향 확인</h4>
+      <p>시나리오 A vs B 결정의 핵심 — 입사 후 가장 먼저 확인해야 할 사항</p>
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">3</div>
+    <div class="action-content">
+      <h4>근로계약서 검토</h4>
+      <p>직함(CTO/기술이사), 역할 범위, 성과 인센티브 조건 명문화 확인</p>
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">4</div>
+    <div class="action-content">
+      <h4>사업계획서 작성 시작</h4>
+      <p>시장 규모, 수익 모델, 손익 분기점 — Claude와 함께 작성</p>
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">5</div>
+    <div class="action-content">
+      <h4>Swagger API 문서 확보</h4>
+      <p>입사 후 내부 Zadara API 공식 문서 확보 → PoC 즉시 착수</p>
+    </div>
+  </div>
+  <div class="action-item">
+    <div class="action-num">6</div>
+    <div class="action-content">
+      <h4>요구사항 정의서(SRS) 작성</h4>
+      <p>개발 착수 전 필수 — Claude와 함께 초안 작성 가능</p>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:30px;">
+    <p>💡 새 Claude 세션 시작 시: 이 문서를 업로드하거나 URL을 공유하면 맥락이 즉시 복원됩니다</p>
+  </div>
+</div>
+
+<!-- 8. Claude 활용 가이드 -->
+<div class="section">
+  <h2>8. Claude 활용 가이드 <span class="tag">AI GUIDE</span></h2>
+  <div class="desc">새 세션에서 Claude에게 전달할 컨텍스트 요약</div>
+
+  <div class="card">
+    <h4>📋 새 세션 시작 시 Claude에게 전달할 내용</h4>
+    <div class="code">
+나는 Zadara 한국 지사의 CTO(기술이사)로 입사 예정입니다.<br>
+Zadara Cloud(compute-iaas-kr1-01.zadara.com, Korea KR1)를 기반으로<br>
+한국형 클라우드 관리 포털을 직접 개발하고,<br>
+CSAP 인증을 통해 공공시장에 진출하는 것이 목표입니다.<br><br>
+이미 완료된 것:<br>
+- Zadara 시스템 전체 API 분석 (19개 페이지, 60+ 엔드포인트)<br>
+- 기술 분석 보고서 (HTML) 완성<br>
+- 제안서 슬라이드 완성<br>
+- 프로젝트 마스터 문서 (이 문서)<br><br>
+현재 진행할 작업: [여기에 오늘 할 일을 입력하세요]
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px;">
+    <div class="card green">
+      <h4>✅ Claude가 할 수 있는 것</h4>
+      <ul>
+        <li>코드 작성 (프론트/백엔드/인프라)</li>
+        <li>문서 초안 작성 (정책서, 설계서 등)</li>
+        <li>아키텍처 설계 및 검토</li>
+        <li>CSAP 준비 체크리스트 작성</li>
+        <li>발표 자료 및 제안서 작성</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h4>⚠️ 본인이 직접 해야 하는 것</h4>
+      <ul>
+        <li>KISA 현장 심사 대응</li>
+        <li>법인 계약 및 서명</li>
+        <li>Zadara 본사 미팅 참석</li>
+        <li>조달청 등록 및 영업</li>
+        <li>팀원 채용 인터뷰</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Zadara Korea — 프로젝트 마스터 문서 v1.0 | 2026년 2월 작성<br>
+  이 문서는 Claude와의 세션 간 맥락 유지를 위한 참조 문서입니다.
+</div>
+
+</body>
+</html>
